@@ -1,0 +1,9 @@
+- npm init
+- dependencies
+	- `~`: if you write ~0.13.0, you want to only update patch releases: 0.13.1 is ok, but 0.14.0 is not.
+	- `^`: if you write ^0.13.0, you want to update patch and minor releases: 0.13.1, 0.14.0 and so on.
+	- `*`: if you write *, that means you accept all updates, including major version upgrades.
+	- `>`: you accept any version higher than the one you specify
+	- `>=`: you accept any version equal to or higher than the one you specify
+	- `<=`: you accept any version equal or lower to the one you specify
+	- `<`: you accept any version lower to the one you specify

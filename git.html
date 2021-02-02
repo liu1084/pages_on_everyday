@@ -1,0 +1,454 @@
+
+
+使用源码包安装和配置git
+
+$ wget https://www.kernel.org/pub/software/scm/git/git-2.4.0.tar.gz 
+$ tar -zvxf git-2.4.0.tar.gz
+$ cd git-2.4.0
+$ make prefix=/usr/local all
+$ sudo make prefix=/usr/local install 
+$ sudo ln -s /usr/local/git-2.4.0/bin/git /usr/bin/git
+$ git --version
+git version 2.4.0</pre>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td class="confluenceTd" colspan="1">
+                    Mac
+                  </td>
+                  
+                  <td class="confluenceTd" colspan="2">
+                    <div class="code panel pdl">
+                      <div class="codeContent panelContent pdl">
+                        <div id="highlighter_951215" class="syntaxhighlighter bash">
+                          <pre class="lang:sh decode:true">sudo port install git-core +svn +doc +bash_completion +gitweb</pre>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr></tbody> </table> </li> </ul> 
+                
+                <p>
+                  Git-GUI（option）
+                </p>
+                
+                <p>
+                  TortoiseGit(<a class="external-link" href="https://download.tortoisegit.org/tgit/" rel="nofollow">donwload</a>)
+                </p>
+                
+                <p>
+                  Eclipse <a class="external-link" href="http://eclipse.org/egit/" rel="nofollow">egit</a>
+                </p>
+                
+                <ul>
+                  <li>
+                    检查git版本
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true">$ git --version
+git version 2.6.4</pre>
+                
+                <ul>
+                  <li>
+                    配置
+                  </li>
+                </ul>
+                
+                <p>
+                  查看已有配置项 &#8211; display git config key & value
+                </p>
+                
+                <pre class="lang:sh decode:true">$ git config -l
+core.symlinks=false
+core.autocrlf=true
+color.diff=auto
+color.status=auto
+color.branch=auto
+color.interactive=true
+pack.packsizelimit=2g
+help.format=html
+http.sslcainfo=/bin/curl-ca-bundle.crt
+sendemail.smtpserver=/bin/msmtp.exe
+diff.astextplain.textconv=astextplain
+rebase.autosquash=true</pre>
+                
+                <p>
+                  查看某个配置项 &#8211;  display a config item
+                </p>
+                
+                <pre class="lang:sh decode:true">$ git config merge.tool</pre>
+                
+                <p>
+                  添加新的配置项 &#8211; add a new config item
+                </p>
+                
+                <pre class="lang:sh decode:true">$ git config --global user.name &lt;name&gt;
+$ git config --global user.email &lt;email&gt;
+$ git config --global http.sslVerify false (option)</pre>
+                
+                <p>
+                  <strong><em><a href="http://blog.83096146.com/?p=53">跟github一起工作 &#8212; work with github</a></em></strong>
+                </p>
+                
+                <p>
+                  git base workflow
+                </p>
+                
+                <ul>
+                  <li>
+                    建立一个新的资源库 &#8211; create a new repository
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true">$ cd my-project
+$ git init</pre>
+                
+                <ul>
+                  <li>
+                    通过git从服务器下载一个资源 &#8211; clone a repository from remote
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true">$ git clone
+git clone ~/existing/repo ~/new/repo
+git clone git://host.org/project.git
+git clone ssh://you@host.org/proj.git
+
+实例：
+$ git clone https://github.com/growthy/frontend.git
+Cloning into 'frontend'...
+Username for 'https://github.com': root
+Password for 'https://root@github.com':
+remote: Counting objects: 253, done.
+remote: Compressing objects: 100% (173/173), done.
+Receiving objects:  66% (1), reused 124 (delta 27) eceiving objects:  65% (165/253)
+Receiving objects: 100% (253/253), 746.95 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (73/73), done.
+Checking connectivity... done.
+</pre>
+                
+                <ul>
+                  <li>
+                    查看当前的工作分支和所有分支 &#8211; display current branch and all branch
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true">$ git branch
+* master
+</pre>
+                
+                <ul>
+                  <li>
+                    建立一个新的分支并在新分支上开发新的功能 &#8211; create a new branch & switch to it
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">$ git checkout -b worldmap
+Switched to a new branch 'worldmap'
+$ git status
+On branch worldmap
+nothing to commit, working directory clean
+$ git branch
+  develop
+  master
+* worldmap
+$ vim package.json
+$ git add package.json
+$ git commit -m "modify repository of package.json"
+[worldmap bcd196f] modify repository of package.json
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+</pre>
+                
+                <ul>
+                  <li>
+                    合并新分支到开发的主分支 &#8211; merge new branch to main branch
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">$ git checkout develop
+Switched to branch 'develop'
+$ git merge worldmap
+Updating 73b5cfd..bcd196f
+Fast-forward
+ package.json | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+</pre>
+                
+                <ul>
+                  <li>
+                    推送内容到服务器 &#8211; Update remote refs along with associated objects
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">$ git push origin develop
+Username for 'https://github.com': root
+Password for 'https://root@github.com':
+Counting objects: 5, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 388 bytes | 0 bytes/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+To https://github.com/growthy/frontend.git
+   73b5cfd..bcd196f  develop -&gt; develop
+</pre>
+                
+                <ul>
+                  <li>
+                    删除分支 &#8211; remove a branch
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true">$ git branch -d worldmap
+Deleted branch worldmap (was bcd196f).
+
+$ git branch
+* develop
+  master
+</pre>
+                
+                <ul>
+                  <li>
+                    添加新文件到工作区
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">$ git branch
+* develop
+  master
+
+$ git checkout -b test
+Switched to a new branch 'test'
+
+$ touch
+.git/         .gitignore    LICENSE       README.md     generators/   package.json
+
+$ touch test.txt
+$ echo "test" &gt; test.txt
+$ git status
+On branch test
+Untracked files:
+  (use "git add ..." to include in what will be committed)
+        test.txt
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git status
+On branch test
+Changes to be committed:
+  (use "git reset HEAD ..." to unstage)
+        new file:   test.txt
+
+
+$ git add test.txt
+$ git commit -m "add test.txt"
+[test 9cbfff7] add test.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test.txt
+
+$ git status
+On branch test
+nothing to commit, working directory clean
+</pre>
+                
+                <ul>
+                  <li>
+                    从工作区删除或者移动文件
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">git log
+git reset sha-1
+git checkout -- filname
+
+</pre>
+                
+                <ul>
+                  <li>
+                    删除没用合并的分支
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">$ git checkout develop
+Switched to branch 'develop'
+
+$ git branch -d test
+error: The branch 'test' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D test'.
+
+$ git branch -D test
+Deleted branch test (was fc20997).
+
+$ git log
+commit bcd196f501738da34c1746ec0f1f6d18b9fd778b
+Author: liujun &lt;liu.jun@nhn.com&gt;
+Date:   Thu Mar 19 11:30:33 2015 +0800
+    modify repository of package.json
+
+</pre>
+                
+                <ul>
+                  <li>
+                    修改新建的文件
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">//准备修改license的内容
+$ vim LICENSE
+$ git status
+On branch license
+Changes not staged for commit:
+  (use "git add ..." to update what will be committed)
+  (use "git checkout -- ..." to discard changes in working directory)
+        modified:   LICENSE
+no changes added to commit (use "git add" and/or "git commit -a")
+//放弃修改
+$ git checkout -- LICENSE
+
+//确认修改
+$ git add LICENSE
+
+</pre>
+                
+                <ul>
+                  <li>
+                    提交到本地
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">$ git add LICENSE
+$ git status
+On branch license
+Changes to be committed:
+  (use "git reset HEAD ..." to unstage)
+        modified:   LICENSE
+
+</pre>
+                
+                <ul>
+                  <li>
+                    废弃本地修改
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">git checkout --
+
+</pre>
+                
+                <ul>
+                  <li>
+                    将添加到索引区的文件还原为未添加
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">$ git reset HEAD LICENSE
+Unstaged changes after reset:
+M       LICENSE
+
+</pre>
+                
+                <ul>
+                  <li>
+                    返回到历史
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">$ git commit -m "update LICENSE"
+[license 2881fbc] update LICENSE
+ 1 file changed, 8 insertions(+)
+
+$ git status
+On branch license
+nothing to commit, working directory clean
+
+$ git log
+commit 2881fbc404483487d04093cc639a0d5ddc60585e
+Author: liujun &lt;liu.jun@nhn.com&gt;
+Date:   Thu Mar 19 15:20:21 2015 +0800
+    update LICENSE
+$ git revert 2881fbc404483487d04093cc639a0d5ddc60585e
+[license b28b13b] Revert "update LICENSE"
+ 1 file changed, 8 deletions(-)
+CN40309-D-1@CN40309-D-1 /D/work/cli/generator-gdc-web-
+$ git status
+On branch license
+nothing to commit, working directory clean
+
+$ cat LICENSE
+
+</pre>
+                
+                <ul>
+                  <li>
+                    推送已经提交到本地的修改到服务器
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">//推送你的改动到远端的任意一个分支上去
+$ git push orgin
+
+//如果你事先没有clone仓库，但是想将你的仓库连接到某个远端仓库，可以使用
+$ git remote add origin
+//然后再进行推送
+
+</pre>
+                
+                <ul>
+                  <li>
+                    查看文件的修改
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">git diff [filename]
+
+</pre>
+                
+                <ul>
+                  <li>
+                    从服务器拖拽文件到本地，并且尝试合并
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">git pull
+
+</pre>
+                
+                <ul>
+                  <li>
+                    建立新的tag
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">//在软件发布或者打版本的时候创建标签，是推荐的做法
+//创建一个1.0.0的标签
+$ git checkout my_feature
+
+$ git log
+commit feaa0131231818272229f0074527e57470b0ce5d
+Author: cn40309 &lt;liu.jun@nhn.com&gt;
+Date:   Thu Jan 29 15:01:29 2015 +0800
+        new file:   pom.xml
+commit 490b91494502d590053418230cec6b06358fbf2a
+Author: cn40309 &lt;liu.jun@nhn.com&gt;
+Date:   Thu Jan 29 14:58:55 2015 +0800
+        new file:   MainController.java
+
+$ git tag 1.0.0 feaa01312318182
+</pre>
+                
+                <ul>
+                  <li>
+                    删除tag
+                  </li>
+                </ul>
+                
+                <pre class="lang:sh decode:true ">git tag -d v1.0
+
+</pre>
+                
+                <p>
+                  <em><strong><a href="https://try.github.io/levels/1/challenges/1" target="_blank">I want to try git online</a></strong></em>
+                </p>

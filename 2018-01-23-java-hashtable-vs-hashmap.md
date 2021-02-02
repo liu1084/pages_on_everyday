@@ -1,0 +1,6 @@
+## HashMap和HashTable的区别
+0: 它们都实现了Map接口
+1：HashTable是线程同步的，而HashMap不是。所以在非多线程的应用中，HashMap要好一点，因为非线程同步的对象在性能方面要优于同步对象；
+2：HashTable不容许有null的key或者value，而HashMap容许有一个null的key和任意多个null的value；
+3：HashMap的一个子类是LinkedHashMap，因此如果您想要可预测的迭代顺序(默认情况下是插入顺序)，您可以很容易地切换到LinkedHashMap的HashMap。如果使用哈希表，这就不那么容易了。
+4: HashTable是java早期的遗留产物，如果在多线程中使用，应该使用ConcurrentHashMap
