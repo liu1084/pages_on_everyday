@@ -15,7 +15,7 @@
 
         # 预检请求处理
         if ($request_method = OPTIONS) {
-                return 204;
+                return 200;
         }
         # #设置跨域配置 End
 ```
