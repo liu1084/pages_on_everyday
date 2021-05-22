@@ -100,6 +100,9 @@ for (Column column : columns) {
 //vi /etc/my.cnf
 [mysqld]
 ...
+
+# 设置server-id
+server-id=1
 #开启binary log
 log-bin=mysql-bin
 

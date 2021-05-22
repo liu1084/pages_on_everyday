@@ -6,6 +6,18 @@
 
 
 
+-   创建数据库
+
+```sql
+CREATE DATABASE `jiradb` CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_bin';
+```
+
+-   查看数据库所用的字符集
+
+```sql
+SELECT @@character_set_database, @@collation_database;
+```
+
 - 显示表格的创建命令
 
 ```sql
@@ -43,6 +55,18 @@ mysql> show databases;
 13 rows in set (0.00 sec)
 ```
 
+- 导出数据库
+
+```sql
+mysqldump -uroot -p****** jiradb > /tmp/jira.sql
+```
+
+-   sql导入数据库
+
+```sql
+mysql -uroot -p*** jiradb < /tmp/jira.sql
+```
+
 - 删除数据库
 
 ```sql
@@ -68,4 +92,60 @@ mysql> source C:\Users\Administrator\Desktop\mysqlsampledatabase.sql
 ### 索引相关
 
 
+
+### binlog
+
+-   查看所有的日志文件
+
+```sql
+mysql> show binary logs;
++---------------+-----------+
+| Log_name      | File_size |
++---------------+-----------+
+| binlog.000001 |       177 |
+| binlog.000002 |       177 |
+| binlog.000003 | 133470803 |
++---------------+-----------+
+3 rows in set (0.00 sec)
+```
+
+-   查看当前使用的日志
+
+```sql
+mysql> show master status;
++---------------+-----------+--------------+------------------+-------------------+
+| File          | Position  | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
++---------------+-----------+--------------+------------------+-------------------+
+| binlog.000003 | 133470803 |              |                  |                   |
++---------------+-----------+--------------+------------------+-------------------+
+1 row in set (0.00 sec)
+```
+
+-   查看当前日志的细节
+
+```sql
+mysql> show binlog events\G;
+*************************** 1. row ***************************
+   Log_name: binlog.000001
+        Pos: 4
+ Event_type: Format_desc
+  Server_id: 87
+End_log_pos: 123
+       Info: Server ver: 5.7.34-log, Binlog ver: 4
+*************************** 2. row ***************************
+   Log_name: binlog.000001
+        Pos: 123
+ Event_type: Previous_gtids
+  Server_id: 87
+End_log_pos: 154
+       Info: 
+*************************** 3. row ***************************
+   Log_name: binlog.000001
+        Pos: 154
+ Event_type: Stop
+  Server_id: 87
+End_log_pos: 177
+       Info: 
+3 rows in set (0.00 sec)
+```
 

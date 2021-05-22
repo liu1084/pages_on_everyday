@@ -3,10 +3,9 @@ layout: post
 title: "github/how to make a blog with octopress on github.com"
 date: 2016-03-25 12:56:05 +0800
 comments: true
-categories: [octopress, blog, github.com, github pages]
--------------------------------------------------------
 
-## There are 10 steps todo:
+
+
 - **Step 1: Install ruby, git and nodejs**
 
 ###### download 
@@ -33,7 +32,7 @@ Install them step-by-step.
 - **Step 4: Install packages using gem**
 
 ###### install dependiencis, switch to development kit bin forlder, and open a console by run `msys.bat`, press(if u open console using system `cmd`, errors will be shown):
-    
+
     gem install bundler
     bundle install
     rake install
@@ -74,7 +73,7 @@ goto [github.com](http://github.com), and create a new repository, named `your g
     git remote add origin git@xxx.github.git
     git add .
     git commit -m init"
-    
+
 - **Step 9: Push pages to github.com**
 
     git push -u origin master
