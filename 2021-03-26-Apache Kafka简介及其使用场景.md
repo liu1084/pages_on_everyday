@@ -49,6 +49,9 @@ test_topic2
 ### 创建新的topic
 bash-4.4# kafka-topics.sh --create --topic test.topic5 --partitions 2 --replication-factor 1  --zookeeper 172.16.0.86:2181
 
+
+kafka-topics.sh --create --topic topic.im.message --partitions 2 --replication-factor 1  --zookeeper 172.16.0.88:2181
+
 ### 在test_topic2中发送一条用：隔开的key/value消息
 bash-4.4# kafka-console-producer.sh --broker-list 172.16.0.86:9092 --topic test_topic2 --property "key.separator=:" --property "parse.key=true"
 >name:testName
