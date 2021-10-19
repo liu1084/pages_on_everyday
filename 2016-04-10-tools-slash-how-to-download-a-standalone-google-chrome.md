@@ -21,11 +21,4 @@ Or, if you want only download a chrome which is standalone. So easy, like this:
 - stantandalone: 1
 
 the download link:
-https://www.google.com/chrome/browser/thankyou.html?platform=win64&standalone=1&installdataindex=defaultbrowser
-
-https://www.google.com/chrome/browser/thankyou.html?platform=win32&standalone=1&installdataindex=defaultbrowser
-
-
-https://www.google.com/chrome/thank-you.html?standalone=1&platform=win&installdataindex=defaultbrowser
-
-https://www.google.com/chrome/thank-you.html?standalone=1&platform=win&installdataindex=defaultbrowser
+https://www.google.com/chrome/thank-you.html?installdataindex=defaultbrowser&platform=win64&standalone=1&statcb=0&defaultbrowser=1#
