@@ -6,10 +6,6 @@
 
 
 
-
-
-
-
 ####  切入点指示符
 
 Spring AOP支持使用以下AspectJ切点标识符(PCD),用于切点表达式：
@@ -412,12 +408,16 @@ public void entityCreationMethods() {}
 
 ### Advice（通知）
 
--   @Before("")
+-   @Before()
 
 ```java
 @Before("指示器表达式")
 public void log(JoinPoint jp) {
-	//...
+	//获取被代理对象正在匹配的方法名称
+    jp.getSignature().getName();
+    
+    //获取方法的参数
+    jp.getArgs()
 }
 ```
 
@@ -426,16 +426,64 @@ public void log(JoinPoint jp) {
 
 -   @After()
 
-后置通知，在目标执行后执行
+```java
+@After("指示器表达式")
+public void log(JoinPoint jp) {
+    //清理资源
+}
+```
 
--   @Around(ProceedingJoinPoint invocation)
+最终通知，在目标方法执行完成后总是会执行。
 
-环绕通知
+
+
+-   @Around()
+
+环绕通知，在目标方法执行前和执行后都有逻辑处理时使用。
+
+```java
+@Around(value="指示器表达式")
+public Object invoke(ProcedingJoinPoint pjp) throws Throwable {
+    Object result = null;
+    //获取方法名
+    String methodName = pjp.getSignature().getName();
+    
+    //获取目标方法的参数
+    Object args [] = pjg.getArgs();
+    
+    //目标方法执行之前的逻辑
+    result = pjp.proceed(); //pjp.proceed()表示目标方法被调用
+    //目标方法执行之后的逻辑
+    //修改目标方法执行后的结果
+    return result;
+}
+```
+
+
 
 -   @AfterReturning()
 
-目标返回时通知
+后置通知，在目标方法之后执行，能够获取目标方法的返回值，可以根据返回值的不同做不同的功能和处理逻辑。
+
+```java
+@AfterReturning(value="指示器表达式", returning="response")
+public void invokeAfterReturning(Object response) {
+    //response是目标方法的返回值
+}
+```
+
+
 
 -   @AfterThrowing()
 
 目标抛出异常时通知
+
+
+
+```java
+@AfterThrowing(value="指示器表达式", throwing = "ex")
+public void invokeAfterThrowing(Exception ex) {
+    //目标方法抛出异常了
+}
+```
+
