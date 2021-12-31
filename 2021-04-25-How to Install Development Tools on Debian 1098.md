@@ -2,11 +2,61 @@
 
 
 
+```shell
+deb https://mirrors.huaweicloud.com/debian/ bullseye main non-free contrib
+deb-src https://mirrors.huaweicloud.com/debian/ bullseye main non-free contrib
+deb https://mirrors.huaweicloud.com/debian-security/ bullseye-security main
+deb-src https://mirrors.huaweicloud.com/debian-security/ bullseye-security main
+deb https://mirrors.huaweicloud.com/debian/ bullseye-updates main non-free contrib
+deb-src https://mirrors.huaweicloud.com/debian/ bullseye-updates main non-free contrib
+deb https://mirrors.huaweicloud.com/debian/ bullseye-backports main non-free contrib
+deb-src https://mirrors.huaweicloud.com/debian/ bullseye-backports main non-free contrib
+```
+
+
+
+```shell
+deb http://mirrors.cloud.tencent.com/debian/ buster main non-free contrib
+deb http://mirrors.cloud.tencent.com/debian-security buster/updates main
+deb http://mirrors.cloud.tencent.com/debian/ buster-updates main non-free contrib
+deb http://mirrors.cloud.tencent.com/debian/ buster-backports main non-free contrib
+
+deb-src http://mirrors.cloud.tencent.com/debian-security buster/updates main
+deb-src http://mirrors.cloud.tencent.com/debian/ buster main non-free contrib
+deb-src http://mirrors.cloud.tencent.com/debian/ buster-updates main non-free contrib
+deb-src http://mirrors.cloud.tencent.com/debian/ buster-backports main non-free contrib
+```
+
+
+
+
+
+```shell
+deb http://deb.debian.org/debian bullseye main contrib non-free
+deb-src http://deb.debian.org/debian bullseye main contrib non-free
+
+deb http://deb.debian.org/debian bullseye-updates main contrib non-free
+deb-src http://deb.debian.org/debian bullseye-updates main contrib non-free
+
+deb http://deb.debian.org/debian bullseye-backports main contrib non-free
+deb-src http://deb.debian.org/debian bullseye-backports main contrib non-free
+
+deb http://security.debian.org/debian-security/ bullseye-security main contrib non-free
+deb-src http://security.debian.org/debian-security/ bullseye-security main contrib non-free
+```
+
+
+
+
+
+
+
 ### Install development tools on debian
 
 ```shell
 sudo apt update
-sudo apt install build-essential
+cp sources.list /etc/apt/sources.list
+sudo apt-get build-dep build-essential
 ```
 
 

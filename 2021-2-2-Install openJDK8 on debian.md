@@ -5,14 +5,15 @@
 ```shell
 vi /etc/apt/source.list
 
-deb http://mirrors.163.com/debian/ buster main non-free contrib
-deb http://mirrors.163.com/debian/ buster-updates main non-free contrib
-deb http://mirrors.163.com/debian/ buster-backports main non-free contrib
-deb-src http://mirrors.163.com/debian/ buster main non-free contrib
-deb-src http://mirrors.163.com/debian/ buster-updates main non-free contrib
-deb-src http://mirrors.163.com/debian/ buster-backports main non-free contrib
-deb http://mirrors.163.com/debian-security/ buster/updates main non-free contrib
-deb-src http://mirrors.163.com/debian-security/ buster/updates main non-free contrib
+deb http://mirrors.aliyun.com/debian/ buster main contrib non-free
+deb-src http://mirrors.aliyun.com/debian/ buster main contrib non-free
+deb http://mirrors.aliyun.com/debian/ buster-updates main contrib non-free
+deb-src http://mirrors.aliyun.com/debian/ buster-updates main contrib non-free
+deb http://mirrors.aliyun.com/debian/ buster-backports main contrib non-free
+deb-src http://mirrors.aliyun.com/debian/ buster-backports main contrib non-free
+deb http://mirrors.aliyun.com/debian-security buster/updates main contrib non-free
+deb-src http://mirrors.aliyun.com/debian-security buster/updates main contrib non-free
+#old java
 deb http://security.debian.org/debian-security buster/updates main contrib
 deb-src http://security.debian.org/debian-security buster/updates main contrib
 
