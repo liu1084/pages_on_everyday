@@ -85,6 +85,36 @@ mysql> source C:\Users\Administrator\Desktop\mysqlsampledatabase.sql
 
 
 
+```sql
+use mysql;
+show grants for 'sinoval'@'192.168.%';
+show grants for 'sinoval';
+show grants for 'root';
+
+select * from user where host='%';
+delete  from user where host='%';
+
+use sinoval-ams;
+SHOW CREATE PROCEDURE statistics_with_hour_peak \G;
+show grants for sinoval;
+revoke ALL PRIVILEGES ON `sinoval-ams`.`sinoval-*.*` from 'sinoval'@'%';
+grant all privileges on * to 'sinoval'@'192.168.%' identified by 'sinoval@2022';
+FLUSH PRIVILEGES;
+
+use sinoval-auth;
+show grants for sinoval;
+
+revoke ALL PRIVILEGES ON `zentao`.*  from 'sinoval'@'%';
+revoke ALL PRIVILEGES ON *.* from 'root'@'%';
+
+grant all privileges on * to 'sinoval'@'192.168.%' identified by 'sinoval@2022';
+FLUSH PRIVILEGES;
+```
+
+
+
+
+
 ### 表相关
 
 

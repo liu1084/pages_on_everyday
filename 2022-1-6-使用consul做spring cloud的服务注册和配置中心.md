@@ -37,8 +37,6 @@ bitnami/redis
 -   启动mysql
 
 ```shell
-docker network create --subnet=192.168.4.0/24 mynet
-
 docker run -d \
 --name mysql57-3307 \
 -p 3307:3306 \

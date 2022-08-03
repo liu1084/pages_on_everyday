@@ -7,13 +7,12 @@ categories:
 ---
 
 ```shell
-$ su root
-echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" > /etc/apt/sources.list.d/webupd8team-java.list
-echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" >> /etc/apt/sources.list.d/webupd8team-java.list
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886
 apt-get update
-apt-get install oracle-java8-installer
-apt-get install oracle-java8-set-default
-java -version
+apt-get install software-properties-common
+
+apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main'
+apt-get update
+
+apt-get install openjdk-8-jdk
 
 ```
