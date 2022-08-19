@@ -109,6 +109,9 @@ revoke ALL PRIVILEGES ON *.* from 'root'@'%';
 
 grant all privileges on * to 'sinoval'@'192.168.%' identified by 'sinoval@2022';
 FLUSH PRIVILEGES;
+
+
+
 ```
 
 
