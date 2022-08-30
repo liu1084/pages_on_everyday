@@ -56,7 +56,7 @@ deb-src http://security.debian.org/debian-security/ bullseye-security main contr
 ```shell
 sudo apt update
 cp sources.list /etc/apt/sources.list
-sudo apt-get build-dep build-essential
+sudo apt-get build-essential
 ```
 
 
