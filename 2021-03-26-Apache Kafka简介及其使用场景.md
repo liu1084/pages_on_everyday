@@ -52,6 +52,19 @@ bash-4.4# kafka-topics.sh --create --topic test.topic5 --partitions 2 --replicat
 
 kafka-topics.sh --create --topic topic.im.message --partitions 2 --replication-factor 1  --zookeeper 172.16.0.88:2181
 
+kafka-topics --create --zookeeper 192.168.10.99:2181 --replication-factor 1 --partitions 1 --topic hollysys-ae
+
+kafka-topics --create --zookeeper 192.168.10.99:2181 --replication-factor 1 --partitions 1 --topic supercon-ae
+
+kafka-topics --create --zookeeper 192.168.10.99:2181 --replication-factor 1 --partitions 1 --topic ae-data
+
+kafka-topics.sh --create --topic hollysys-ae --partitions 2 --replication-factor 1  --bootstrap-server 192.168.10.99:9092
+
+kafka-topics.sh --create --topic supercon-ae --partitions 2 --replication-factor 1  --bootstrap-server 192.168.10.99:9092
+
+kafka-topics.sh --create --topic ae-data --partitions 2 --replication-factor 1  --bootstrap-server 192.168.10.99:9092
+
+
 ### 在test_topic2中发送一条用：隔开的key/value消息
 bash-4.4# kafka-console-producer.sh --broker-list 172.16.0.86:9092 --topic test_topic2 --property "key.separator=:" --property "parse.key=true"
 >name:testName
