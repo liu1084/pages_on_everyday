@@ -7,3 +7,4 @@
 -   在boot界面输入：
 
 install vga=normal fb=false
+
