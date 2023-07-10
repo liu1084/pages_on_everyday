@@ -47,16 +47,31 @@ deb-src http://security.debian.org/debian-security/ bullseye-security main contr
 
 
 
-
-
-
-
 ### Install development tools on debian
 
 ```shell
-sudo apt update
 cp sources.list /etc/apt/sources.list
-sudo apt-get build-essential
+
+apt-get update -y \
+&& apt upgrade -y \
+&& apt-get install -y \
+build-essential \
+libssl-dev \
+openssl \
+libncurses-dev \
+git \
+bison \
+cmake \
+libwrap0-dev \
+zlib1g-dev \
+ca-certificates \
+g++ \
+python-dev \
+autotools-dev \
+libicu-dev \
+libbz2-dev \
+libboost-all-dev \
+pkg-config
 ```
 
 
