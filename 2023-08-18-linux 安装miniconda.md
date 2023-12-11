@@ -16,6 +16,10 @@ rm -rf ~/miniconda3/miniconda.sh
 # add a conda initialize to your bash
 ~/miniconda3/bin/conda init bash
 
+source ~/.bashrc
+
+conda create -n 3.10 python=3.10
+
 # Verify the installaton 
 conda list
 ```
